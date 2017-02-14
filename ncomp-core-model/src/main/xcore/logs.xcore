@@ -1,0 +1,103 @@
+
+/*-
+ * ============LICENSE_START==========================================
+ * OPENECOMP - DCAE
+ * ===================================================================
+ * Copyright (c) 2017 AT&T Intellectual Property. All rights reserved.
+ * ===================================================================
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0 
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============LICENSE_END============================================
+ */
+	
+@GenModel(modelDirectory="/ncomp-core-model/src/main/xcore-gen")
+
+package org.openecomp.ncomp.core.logs
+
+import org.openecomp.ncomp.core.IncreasingULongMetricAttribute
+import org.openecomp.ncomp.core.NamedEntity
+import org.openecomp.ncomp.core.function.Function
+
+class LogMessage { 
+	long time
+	String resourceName
+	LogSeverity severity
+	LogLevel level
+	String message
+	String category
+	int numberOfSuppressed = "0"
+	Long suppressedStartTime
+}
+
+enum LogLevel { UNKNOWN, TRACE, DEBUG, INFO, WARN, ERROR, FATAL }
+enum LogSeverity { UNKNOWN, SEV1, SEV2, SEV3, SEV4 }
+
+
+class LogMessageRule extends NamedEntity {
+	String description
+	String messageFilter
+	String resourcePathFilter
+	LogLevel level
+	LogSeverity severity
+	LogLevel newLevel
+	LogSeverity newSeverity
+	String newCategory
+	boolean disabled = "false"
+	refers Function updateFunction
+}
+
+abstract class LogMessageContainer {
+	contains LogMessageContainerConfiguration logMessageConfiguration
+	contains LogMessageCategory[] logMessageCategories
+	contains LogMessageStats[] logMessageStats 
+}
+
+class LogMessageContainerConfiguration {
+		
+}
+
+class LogMessageCategory extends NamedEntity {
+	contains LogMessageStats[] stats
+}
+
+class LogMessageStats extends NamedEntity {
+	LogLevel level
+	LogSeverity severity 
+	IncreasingULongMetricAttribute count
+}
+
+class LogMessageState {
+	boolean suspended
+	refers LogMessage log
+	refers LogMessageCategory category
+}
+
+class LogConfiguration { 
+        contains LogFile[] files
+}
+
+class LogFile {
+        String filename
+        contains LogPattern[] patterns
+}
+
+class LogPattern {
+        String pattern
+        String message
+        String level
+        String severity
+        String path
+}
+
+
+
+

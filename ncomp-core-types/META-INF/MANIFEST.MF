@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: ncomp-core-types
+Bundle-Version: 0.1.0.qualifier
+Export-Package: org.openecomp.ncomp.core.types.metrics
+Require-Bundle: ncomp-utils-java;bundle-version="0.1.0",
+ ncomp-utils-journaling
+Bundle-Vendor: %providerName

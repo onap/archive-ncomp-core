@@ -1,0 +1,92 @@
+
+/*-
+ * ============LICENSE_START==========================================
+ * OPENECOMP - DCAE
+ * ===================================================================
+ * Copyright (c) 2017 AT&T Intellectual Property. All rights reserved.
+ * ===================================================================
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0 
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============LICENSE_END============================================
+ */
+	
+@GenModel(modelDirectory="/ncomp-core-model/src/main/xcore-gen")
+
+package org.openecomp.ncomp.core.metrics
+
+import org.openecomp.ncomp.core.DoubleMetricAttribute
+import org.openecomp.ncomp.core.IncreasingULongMetricAttribute
+import org.openecomp.ncomp.core.LongMetricAttribute
+import org.openecomp.ncomp.core.NamedEntity
+
+
+abstract class Metric {
+	long time
+	String resourceName
+	String metricName
+}
+
+class DoubleMetric extends Metric {
+	double value
+}
+
+class LongMetric extends Metric {
+	boolean increasing = "false"
+	boolean delta = "false"
+	long value
+}
+
+class StringMetric extends Metric {
+	String value
+}
+
+abstract class MetricValueOption extends NamedEntity {}
+
+
+enum AggregationMetricValueOptionType { SUM, AVERAGE, COUNT, MAX, MIN }
+
+class AggregationMetricValueOption extends MetricValueOption {
+	String duration
+	AggregationMetricValueOptionType aggregationType
+}
+
+class BasicMetricValueOption extends MetricValueOption {
+	
+}
+
+class SequenceMetricValueOption extends MetricValueOption {
+	contains MetricValueOption[] options
+}
+
+abstract class MetricsContainer {
+	
+}
+
+class BasicMetrics extends MetricsContainer { 
+	contains BasicMetric[] metrics
+}
+
+abstract class BasicMetric extends NamedEntity {
+	
+}
+
+class BasicIncreasingULongMetric extends BasicMetric {
+	transient IncreasingULongMetricAttribute value
+}
+
+class BasicLongMetric extends BasicMetric {
+	transient LongMetricAttribute value
+}
+
+class BasicDoubleMetric extends BasicMetric {
+	transient DoubleMetricAttribute value
+}

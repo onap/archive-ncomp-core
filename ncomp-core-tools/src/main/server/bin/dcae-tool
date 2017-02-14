@@ -1,0 +1,117 @@
+#!/bin/bash
+
+export BROWSER=chromium-browser 
+export NCOMPPROJECT=DCAE
+export NCOMPNAME=dcae
+export NCOMPBASE=org.openecomp.dcae
+
+
+cd $HOME
+case $USER in 
+  vagrant)
+    PACKAGES=/vagrant/packages
+    ;;
+  *)
+    PACKAGES=/home/ubuntu/packages
+    ;;
+esac
+
+case $(uname -p) in
+  *86) PACKAGES2=${PACKAGES}32 ;;
+  *) PACKAGES2=${PACKAGES}64 ;;
+esac
+
+CMD=$1
+LOG=$HOME/logs/dcae-tool.log
+mkdir -p `dirname $LOG`
+echo `date` $0 $* >> $LOG
+
+case $CMD in 
+  update-dcae-tool)
+    ncomp-tool update-ncomp-tool
+    ;;
+  install-eclipse)
+    VERSION=$2
+    DIR=$HOME/eclipse-$VERSION
+    case $VERSION in
+      dcae) TAR=$PACKAGES2/eclipse-ncomp.tar.gz ;;
+      *) TAR=$PACKAGES2/eclipse-$VERSION.tar.gz ;;
+    esac
+    if [ ! -e $TAR ]; then echo $TAR does not exists; exit 1; fi
+    if [ -e $DIR ]; then echo $DIR already exists; exit 1; fi
+    mkdir $DIR
+    cd $DIR
+    tar xf $TAR
+    ;;
+  start-eclipse)
+    VERSION=$2
+    DIR=$HOME/eclipse-$VERSION
+    if [ ! -e $DIR ]; then echo $DIR does not exists; exit 1; fi
+    $DIR/eclipse > $HOME/logs/eclipse.$VERSION.log &
+    ;;
+  uninstall-eclipse)
+    VERSION=$2
+    DIR=$HOME/eclipse-$VERSION
+    'rm' -r $DIR
+    ;;
+  restart-vncserver)
+    rm -f $HOME/.vnc/*{pid,log} /tmp/.X?-lock /tmp/.X11-unix/X?
+    ps -eaf | grep Xvnc4 | awk '{print $2}' | xargs kill -9
+    vncserver
+    ;;
+   create-vm-manager)
+    NAME=$2
+    (echo org.openecomp.dcae.controller ; echo dcae-controller-service-$NAME-model ; echo dcae-vm-manager) | ncomp-tool create-xcore-project
+    (echo org.openecomp.dcae.controller ; echo dcae-controller-service-$NAME-manager ; echo dcae-vm-manager ; echo Dcae) | ncomp-tool create-sirius-project
+    ncomp-tool create-parent-project org.openecomp.dcae.controller dcae-controller-service-$NAME
+    ;;
+   create-cdap-manager)
+    NAME=$2
+    (echo org.openecomp.dcae.controller ; echo dcae-controller-service-$NAME-model ; echo dcae-cdap-manager) | ncomp-tool create-xcore-project
+    (echo org.openecomp.dcae.controller ; echo dcae-controller-service-$NAME-manager ; echo dcae-cdap-manager ; echo Dcae) | ncomp-tool create-sirius-project
+    ncomp-tool create-parent-project org.openecomp.dcae.controller dcae-controller-service-$NAME
+    ;;
+   create-docker-manager)
+    NAME=$2
+    (echo org.openecomp.dcae.controller ; echo dcae-controller-service-$NAME-model ; echo dcae-docker-manager) | ncomp-tool create-xcore-project
+    (echo org.openecomp.dcae.controller ; echo dcae-controller-service-$NAME-manager ; echo dcae-docker-manager ; echo Dcae) | ncomp-tool create-sirius-project
+    ncomp-tool create-parent-project org.openecomp.dcae.controller dcae-controller-service-$NAME
+    ;;
+  install-dcae-manager)
+    shift
+    ncomp-tool install-sirius-controller "$@"
+    ;;
+  install-dcae-manager-gui)
+    if [ ! -e $HOME/tomcat ]; then 
+      ncomp-tool install-tomcat
+    fi
+    ncomp-tool start-tomcat
+    shift
+    ncomp-tool install-sirius-controller-gui "$@"
+    ;;
+  install-dcae-manager-gui-eclipse)
+    if [ ! -e $HOME/tomcat ]; then 
+      ncomp-tool install-tomcat
+    fi
+    ncomp-tool start-tomcat
+    shift
+    ncomp-tool install-sirius-controller-gui-eclipse "$@"
+    ;;
+  *)
+     echo Usages:
+     echo "  #### tools for updating NCOMP development setup"
+     echo "  $0 update-dcae-tool"
+     echo "  $0 install-eclipse VERSION"
+     echo "  $0 start-eclipse VERSION"
+     echo "  $0 uninstall-eclipse VERSION"
+     echo "  #### tools for using Sirius Operational Management Framework (SOMF)"
+     echo "  $0 create-vm-manager NAME"
+     echo "  $0 create-cdap-manager NAME"
+     echo "  $0 create-docker-manager NAME"
+     echo "  $0 install-dcae-manager GroupId ArtifactId PortNumber [Version]"
+     echo "  $0 install-dcae-manager-gui ArtifactId PrettyName"
+     echo "  #### utils"
+     echo "  $0 restart-vncserver"
+    ;;
+esac
+

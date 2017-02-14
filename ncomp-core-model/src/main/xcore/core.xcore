@@ -1,0 +1,98 @@
+
+/*-
+ * ============LICENSE_START==========================================
+ * OPENECOMP - DCAE
+ * ===================================================================
+ * Copyright (c) 2017 AT&T Intellectual Property. All rights reserved.
+ * ===================================================================
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0 
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============LICENSE_END============================================
+ */
+	
+@GenModel(modelDirectory="/ncomp-core-model/src/main/xcore-gen")
+
+package org.openecomp.ncomp.core
+
+import org.json.JSONObject 
+
+import org.openecomp.ncomp.core.types.metrics.IncreasingULongMetricAttribute
+import org.openecomp.ncomp.core.types.metrics.LongMetricAttribute
+import org.openecomp.ncomp.core.types.metrics.DoubleMetricAttribute
+import org.openecomp.ncomp.core.types.metrics.StringMetricAttribute 
+import org.openecomp.ncomp.core.types.metrics.DateMetricAttribute 
+
+annotation "http://openecomp.org" as ecomp
+
+type JsonObject wraps JSONObject 
+create {
+	try {
+		if (it != null) new JSONObject(it)
+	}
+	catch (Exception e) {
+		throw new RuntimeException("Bad JSON String: " + it + " " + e) 
+	}
+}
+
+type RemoteContext wraps JSONObject  
+create {
+	try {
+		if (it != null) new JSONObject(it)
+	}
+	catch (Exception e) {
+		throw new RuntimeException("Bad JSON String: " + it + " " + e)
+	}
+}  
+
+
+abstract class NamedEntity    
+{
+	@ecomp(^type="configuration")
+	String name 
+	Date lastPolled
+	Date lastChanged
+	Date created   
+}
+
+abstract class Event {
+	// TODO what should be the fields in all events.
+}
+
+enum OperationalState {
+	OPERATIONAL, SUSPENDED
+} 
+
+abstract class HasOperationalState {
+	OperationalState operationalState
+}
+
+enum DeploymentStatus {
+	UNDEPLOYED, DEPLOYED, DEPLOYED_PARTIALLY, DEPLOYED_ERRORS 
+}
+
+
+class User extends NamedEntity {
+	String publicKey
+	DeploymentStatus deploymentStatus
+}
+
+
+type IncreasingULongMetricAttribute wraps IncreasingULongMetricAttribute
+convert { try { return it.toStringValue() } catch (Exception e) {return null} }
+type LongMetricAttribute wraps LongMetricAttribute
+convert { try { return it.toStringValue() } catch (Exception e) {return null} }
+type DoubleMetricAttribute wraps DoubleMetricAttribute
+convert { try { return it.toStringValue() } catch (Exception e) {return null} }
+type StringMetricAttribute wraps StringMetricAttribute
+convert { try { return it.toStringValue() } catch (Exception e) {return null} }
+type DateMetricAttribute wraps DateMetricAttribute
+convert { try { return it.toStringValue() } catch (Exception e) {return null} }

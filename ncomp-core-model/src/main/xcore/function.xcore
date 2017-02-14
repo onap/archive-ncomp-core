@@ -1,0 +1,112 @@
+
+/*-
+ * ============LICENSE_START==========================================
+ * OPENECOMP - DCAE
+ * ===================================================================
+ * Copyright (c) 2017 AT&T Intellectual Property. All rights reserved.
+ * ===================================================================
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0 
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============LICENSE_END============================================
+ */
+	
+@GenModel(modelDirectory="/ncomp-core-model/src/main/xcore-gen")
+
+package org.openecomp.ncomp.core.function
+
+import org.openecomp.ncomp.core.NamedEntity
+import org.openecomp.ncomp.core.metrics.MetricValueOption
+
+
+
+abstract class Function extends NamedEntity {
+	
+}
+
+abstract class Iterator extends NamedEntity {
+	 
+}
+
+class IteratorUsingFunction extends Iterator {
+	String[] paths
+	boolean recursive
+	contains Function filter
+}
+
+class RuleFunction extends Function {
+	contains FunctionRule[] rules
+	
+}
+
+class FunctionRule {
+	contains FunctionMatch[] matches 
+	contains FunctionAction action
+}
+
+class FunctionAction {
+	String value
+}
+
+class RuleUpdateFunction extends Function {
+	contains FunctionUpdateRule[] rules
+	
+}
+
+class FunctionUpdateRule {
+	contains FunctionMatch[] matches 
+	contains FunctionUpdate [] updates
+}
+
+abstract class FunctionUpdate {
+	
+}
+
+class FunctionUpdateAttribute extends FunctionUpdate {
+	String path
+	String value
+}
+
+abstract class FunctionMatch {
+}
+
+class FunctionMatchAttribute extends FunctionMatch {
+	String path
+	String match
+	boolean negation
+}
+
+class FunctionMatchMetric extends FunctionMatch {
+	String path
+	refers MetricValueOption option
+	Double lowerBound
+	Double upperBound
+	boolean negation
+}
+
+
+class FunctionMatchInstanceOf extends FunctionMatch { 
+	String ePackage
+	String eName
+}
+
+
+abstract class ValuePair {
+	String path 
+}
+
+class StringValuePair extends ValuePair {
+	String value
+}
+
+
+
+

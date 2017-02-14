@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated core -->
+      <package
+            uri="org.openecomp.ncomp.core"
+            class="org.openecomp.ncomp.core.CorePackage"
+            genModel="src/main/xcore/core.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated function -->
+      <package
+            uri="org.openecomp.ncomp.core.function"
+            class="org.openecomp.ncomp.core.function.FunctionPackage"
+            genModel="src/main/xcore/function.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated metricOptions -->
+      <package
+            uri="org.openecomp.ncomp.core.metrics"
+            class="org.openecomp.ncomp.core.metrics.MetricsPackage"
+            genModel="src/main/xcore/metrics.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated logs -->
+      <package
+            uri="org.openecomp.ncomp.core.logs"
+            class="org.openecomp.ncomp.core.logs.LogsPackage"
+            genModel="src/main/xcore/logs.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated alerts -->
+      <package
+            uri="org.openecomp.ncomp.core.alerts"
+            class="org.openecomp.ncomp.core.alerts.AlertsPackage"
+            genModel="src/main/xcore/alerts.xcore"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated component -->
+      <package
+            uri="org.openecomp.ncomp.component"
+            class="org.openecomp.ncomp.component.ComponentPackage"
+            genModel="src/main/xcore/component.xcore"/>
+   </extension>
+
+</plugin>

@@ -1,0 +1,78 @@
+
+/*-
+ * ============LICENSE_START==========================================
+ * OPENECOMP - DCAE
+ * ===================================================================
+ * Copyright (c) 2017 AT&T Intellectual Property. All rights reserved.
+ * ===================================================================
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0 
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ============LICENSE_END============================================
+ */
+	
+@GenModel(modelDirectory="/ncomp-core-model/src/main/xcore-gen")
+
+package org.openecomp.ncomp.component
+
+import org.openecomp.ncomp.core.NamedEntity
+import org.openecomp.ncomp.core.LongMetricAttribute
+import org.openecomp.ncomp.core.IncreasingULongMetricAttribute
+import org.openecomp.ncomp.core.Event 
+
+class Component extends NamedEntity {
+	contains ComponentClass[] classes
+	contains DroolsRuntime[] droolsRuntimes
+}
+
+class ComponentClass extends NamedEntity {
+	contains Api[] apis
+	LongMetricAttribute numberOfResources
+	IncreasingULongMetricAttribute numberOfUpdateRequests
+	IncreasingULongMetricAttribute numberOfCreateRequests
+	IncreasingULongMetricAttribute numberOfDeleteRequests
+}
+
+class Api extends NamedEntity {
+	IncreasingULongMetricAttribute numberOfRequests
+	IncreasingULongMetricAttribute numberOfErrorRequests
+	IncreasingULongMetricAttribute numberOfCompletedRequests
+	LongMetricAttribute outstandingRequests
+	LongMetricAttribute lastRequestDuration
+	op ApiRequest[] currentRequests()
+}
+
+class ApiRequest extends Event {
+	String componentName
+	String resourcePath
+	String transactionId
+	String parentTransactionId
+	String action
+	Long duration
+	ApiRequestStatus status
+}
+
+
+enum ApiRequestStatus {
+	OKAY, ERROR, INPROGRESS, START
+}
+
+class DroolsRuntime extends NamedEntity {
+	contains DroolsRule[] rules
+}
+
+class DroolsRule extends NamedEntity {
+	IncreasingULongMetricAttribute numberOfFires
+}
+
+enum DroolsObjectChange {
+	INSERTED,DELETED,UPDATED
+} 

@@ -1,0 +1,385 @@
+#!/bin/bash
+
+export BROWSER=chromium-browser 
+
+export NCOMPPROJECT=${NCOMPPROJECT:=NCOMP}
+export NCOMPNAME=${NCOMPNAME:=ncomp}
+export NCOMPBASE=${NCOMPBASE:=org.openecomp.ncomp}
+
+cd $HOME
+case $USER in 
+  vagrant)
+    PACKAGES=/vagrant/packages
+    ;;
+  *)
+    PACKAGES=/home/ubuntu/packages
+    ;;
+esac
+
+case $(uname -p) in
+  *86) PACKAGES2=${PACKAGES}32 ;;
+  *) PACKAGES2=${PACKAGES}64 ;;
+esac
+
+
+CMD=$1
+LOG=$HOME/logs/ncomp-tool.log
+mkdir -p `dirname $LOG`
+echo `date` $0 $* >> $LOG
+
+case $CMD in 
+  update-ncomp-tool)
+    GIT=git/dcae-org.openecomp.ncomp
+    ZIP=git/org.openecomp.ncomp.core/ncomp-core-tools/target/ncomp-core-tools-*.zip
+    for PROJECT in core maven; do
+      if [ ! -e $GIT.$PROJECT ]; then 
+        echo need to clone $GIT.$PROJECT
+        exit 1
+      else 
+        (cd $GIT.$PROJECT ; git pull )
+      fi
+    done
+    if [ -e $ZIP ]; then rm $ZIP; fi
+    (cd $GIT.core ; cd ncomp-core-tools && mvn clean install)
+    if [ ! -e $ZIP ]; then 
+      echo Unable to find $ZIP.
+      exit 1
+    fi
+    T=$(date +%Y-%m-%d-%H:%M)
+    find bin -type f | grep -v saved | xargs -I XX cp -p XX XX.saved.$T
+    unzip -o $ZIP
+    ;;
+  create-xcore-project)
+    GEN=git/dcae-org.openecomp.ncomp.maven/ncomp-maven-xcore-project/src/main/resources/new_project.sh
+    echo "$NCOMPPROJECT GroupId (e.g., $NCOMPBASE.hello.world):"
+    read GNAME
+    if [[ ! $GNAME =~ $NCOMPBASE[a-z.]+$ ]]; then echo 'need to match org.openecomp.ncomp[a-z.]+'; exit; fi
+    echo "$NCOMPPROJECT project name (e.g., $NCOMPNAME-hello-world-model):"
+    GPREFIX=$(echo $NCOMPNAME-$GNAME | sed s/-$NCOMPBASE// | sed 's/\./-/g')-
+    read PROJECTNAME
+    if [[ ! $PROJECTNAME =~ $GPREFIX[-a-z]+ ]]; then echo "need to match $GPREFIX\[a-z-\]+-model"; exit; fi
+    if [[ ! $PROJECTNAME =~ .*-model ]]; then echo "need to match $GPREFIX\[a-z-\]+-model"; exit; fi
+    echo "Type of project: server, adaptor, dcae-vm-manager"
+    read PROJECTTYPE
+    case $PROJECTTYPE in
+       adaptor|server|dcae-*-manager)
+         ;;
+       *)
+         echo "PROJECTTYPE $PROJECTTYPE not supported"
+         exit
+         ;;
+    esac
+    DIR=git/$GNAME
+    if [ ! -e $DIR ]; then echo GIT directory does not exists: $DIR; exit; fi
+    if [ -e $DIR/$PROJECTNAME ]; then echo Project directory already exists exists: $DIR/$PROJECTNAME; exit; fi
+    echo creating XCORE project in $DIR/$PROJECTNAME
+    X=$(echo $PROJECTNAME | sed s/$NCOMPNAME-// | sed s/-model$//)
+    for YY in $(echo $X | tr "-" "\n"); do
+     Y=$Y"$(tr '[:lower:]' '[:upper:]' <<< ${YY:0:1})${YY:1}"
+    done
+    #echo $X $Y
+    echo $(date) bash $GEN $DIR/$PROJECTNAME $X $PROJECTTYPE $Y $GNAME $NCOMPBASE $NCOMPNAME >> $LOG
+    bash $GEN $DIR/$PROJECTNAME $X $PROJECTTYPE $Y $GNAME $NCOMPBASE $NCOMPNAME
+    ;;
+  create-parent-project)
+    GEN=git/dcae-org.openecomp.ncomp.maven/ncomp-maven-parent-project/src/main/resources/new_project.sh
+    GNAME=$2
+    PROJECTNAME=$3
+    DIR=git/$GNAME
+    echo $GEN $DIR $PROJECTNAME $GNAME
+    bash $GEN $DIR $PROJECTNAME $GNAME
+    ;;
+  create-sirius-project)
+    GEN=git/dcae-org.openecomp.ncomp.maven/ncomp-maven-sirius-project/src/main/resources/new_project.sh
+    echo "$NCOMPPROJECT GroupId (e.g., $NCOMPBASE.hello.world):"
+    read GNAME
+    if [[ ! $GNAME =~ $NCOMPBASE[a-z.]+$ ]]; then echo 'need to match org.openecomp.ncomp[a-z.]+'; exit; fi
+    DIR=git/$GNAME
+    if [ ! -e $DIR ]; then echo GIT directory does not exists: $DIR; exit; fi
+    echo "$NCOMPPROJECT project name (e.g., $NCOMPNAME-hello-world-model):"
+    GPREFIX=$(echo $NCOMPNAME-$GNAME | sed s/-$NCOMPBASE// | sed 's/\./-/g')-
+    read PROJECTNAME
+    if [[ ! $PROJECTNAME =~ $GPREFIX[-a-z]+ ]]; then echo "need to match $GPREFIX\[a-z-\]+"; exit; fi
+    if [[ $PROJECTNAME =~ .*-model ]]; then echo "cannot match *-model"; exit; fi
+    if [ -e $DIR/$PROJECTNAME ]; then echo Project directory already exists: $DIR/$PROJECTNAME; exit; fi
+    MODELPROJECTNAME=$(echo $PROJECTNAME | sed 's/[a-z]*$/model/')
+    if [ ! -e $DIR/$MODELPROJECTNAME ]; then echo Model Project directory does not exists: $DIR/$MODELPROJECTNAME; exit; fi
+    echo "Type of project: server, adaptor"
+    read PROJECTTYPE
+    case $PROJECTTYPE in
+       adaptor|server|dcae-*-manager)
+         ;;
+       *)
+         echo "PROJECTTYPE $PROJECTTYPE not supported"
+         exit
+         ;;
+    esac
+    echo "Project Prefix"
+    read PROJECTPREFIX
+    if [ "$PROJECTPREFIX" == "" ]; then echo prefix cannot be empty; exit; fi
+    MODEL=$(echo $PROJECTNAME | sed s/.*-//)
+    echo creating XCORE project in $DIR/$PROJECTNAME
+    X=$(echo $PROJECTNAME | sed s/$NCOMPNAME-// | sed s/-$MODEL$//)
+    for YY in $(echo $X | tr "-" "\n"); do
+     Y=$Y"$(tr '[:lower:]' '[:upper:]' <<< ${YY:0:1})${YY:1}"
+    done
+    #echo $X $Y
+    echo $(date) bash $GEN $DIR/$PROJECTNAME $X $MODEL $PROJECTTYPE $Y $PROJECTPREFIX $GNAME $MODELPROJECTNAME $NCOMPBASE $NCOMPNAME >> $LOG
+    bash $GEN $DIR/$PROJECTNAME $X $MODEL $PROJECTTYPE $Y $PROJECTPREFIX $GNAME $MODELPROJECTNAME $NCOMPBASE $NCOMPNAME
+    ;;
+  create-sirius-runtime)
+    GEN=git/dcae-org.openecomp.ncomp.maven/ncomp-maven-sirius-runtime/src/main/resources/new_project.sh
+    DIR=$2
+    GNAME=$3
+    PROJECTNAME=$4
+    PORT=$5
+    if [ -e $DIR ]; then
+      echo "Directory exists: $DIR"
+      echo "Comparing config..."
+      SDIR=git/$GNAME/$PROJECTNAME/src/main/server
+      BBBB=`echo $PROJECTNAME | sed s/ncomp-//g`
+      for i in $(cd $SDIR; find config -type f -print); do
+	if [ $i = "config/pw.sh.sh" ]; then continue; fi
+	j=$i
+	if [ $i == "config/makefile" ]; then j="makefile"; fi
+        echo "Comparing $i..."
+        if [ -e $DIR/config/pw.sh ]; then
+          sed -e "s/AAAA/$PROJECTNAME/g" -e "s/PORT/$PORT/g" -e "s/BBBB/$BBBB/g" < $SDIR/$i | $DIR/config/pw.sh | diff - $DIR/$j
+        else
+          sed -e "s/AAAA/$PROJECTNAME/g" -e "s/PORT/$PORT/g" -e "s/BBBB/$BBBB/g" < $SDIR/$i | diff - $DIR/$j
+        fi
+      done
+      exit
+    fi
+    echo echo bash $GEN $DIR $PROJECTNAME $PORT >> $LOG
+    bash $GEN $DIR $GNAME $PROJECTNAME $PORT
+    ;;
+  install-sirius-controller-gui)
+    NAME=$2
+    APPNAME=$3
+    WEBAPPDIR=$HOME/tomcat/apache-tomcat-7.0.62/webapps
+    CONFIG=$HOME/controllers/$NAME/config/console.properties
+    if [ ! -e $WEBAPPDIR ]; then echo $WEBAPPDIR does not exists. Please install tomcat. ; exit 1; fi
+    if [ ! -e $CONFIG ]; then echo $CONFIG does not exists. Please install controller ; exit 1; fi
+    mkdir -p $WEBAPPDIR/$NAME 
+    ( cd $WEBAPPDIR/$NAME ; rm -rf * ; jar xf $PACKAGES/SiriusPortal.war )
+    sed -i 's/>Big Streaming Analytics .*</>APPNAME</' $WEBAPPDIR/$NAME/SiriusPortal.html
+    sed -i "s/APPNAME/$APPNAME/" $WEBAPPDIR/$NAME/SiriusPortal.html
+    cp $CONFIG $WEBAPPDIR/$NAME/WEB-INF/classes/gui.properties
+    URL=$(grep endpoint $CONFIG | head -1 | sed s/.endpoint.*//)
+    echo url=$URL >> $WEBAPPDIR/$NAME/WEB-INF/classes/gui.properties
+    touch $WEBAPPDIR/$NAME/WEB-INF/web.xml
+    if [ "$START" != "no" ]; then
+        echo URL "http://localhost:18080/$NAME" will automatically load in 30 seconds
+        (sleep 30; $BROWSER "http://localhost:18080/$NAME";) &
+    fi
+    ;;
+  install-sirius-controller-gui-eclipse)
+    NAME=$2
+    APPNAME=$3
+    WEBAPPDIR=$HOME/tomcat/apache-tomcat-7.0.62/webapps
+    CONFIG=$HOME/git/*/$NAME/config/console.properties
+    if [ ! -e $WEBAPPDIR ]; then echo $WEBAPPDIR does not exists. Please install tomcat. ; exit 1; fi
+    if [ ! -e $CONFIG ]; then echo $CONFIG does not exists. Please install controller ; exit 1; fi
+    mkdir -p $WEBAPPDIR/$NAME 
+    ( cd $WEBAPPDIR/$NAME ; rm -rf * ; jar xf $PACKAGES/SiriusPortal.war )
+    sed -i 's/>Big Streaming Analytics .*</>APPNAME</' $WEBAPPDIR/$NAME/SiriusPortal.html
+    sed -i "s/APPNAME/$APPNAME/" $WEBAPPDIR/$NAME/SiriusPortal.html
+    cp $CONFIG $WEBAPPDIR/$NAME/WEB-INF/classes/gui.properties
+    URL=$(grep endpoint $CONFIG | head -1 | sed s/.endpoint.*//)
+    echo url=$URL >> $WEBAPPDIR/$NAME/WEB-INF/classes/gui.properties
+    touch $WEBAPPDIR/$NAME/WEB-INF/web.xml
+    if [ "$START" != "no" ]; then
+        echo URL "http://localhost:18080/$NAME" will automatically load in 30 seconds
+        (sleep 30; $BROWSER "http://localhost:18080/$NAME";) &
+    fi
+    ;;
+  install-sirius-controller)
+    GNAME=$2
+    NAME=$3
+    PORT=$4
+    VERSION=${5:-0.1.0-SNAPSHOT}
+    DIR=$HOME/controllers/$NAME
+    $HOME/bin/ncomp-tool create-sirius-runtime $DIR $GNAME $NAME $PORT
+    #mvn org.apache.maven.plugins:maven-dependency-plugin:2.9:copy -Dartifact=$GNAME:$NAME:$VERSION:zip -DoutputDirectory=$DIR
+    FILE=$NAME-$VERSION.zip 
+    FILE2=$NAME-$VERSION-runtime.zip 
+    FFILE2=git/$GNAME/$NAME/target/$FILE2
+    if [ -e $FFILE2 ]; then
+      cp $FFILE2 $DIR
+      rm -rf $DIR/lib $DIR/bin $DIR/scripts
+      cd $DIR
+      unzip -qo $FILE2
+    else
+      FFILE=git/$GNAME/$NAME/target/$FILE
+      cp $FFILE $DIR
+      rm -rf $DIR/lib $DIR/bin $DIR/scripts
+      cd $DIR
+      unzip -qo $FILE
+      cp $HOME/git/$GNAME/$NAME/target/$NAME-$VERSION.jar $DIR/lib
+    fi
+    if [ -e $DIR/config/pw.sh ]; then
+      find $DIR/bin -type f | xargs -I X echo "cat X | $DIR/config/pw.sh > X.bak ; mv X.bak X ; chmod +x X" | bash
+    fi
+    ## ls -ld bin/*
+    if [ "$START" != "no" ]; then
+        make restart
+    fi
+    ;;
+  install-odl-controller)
+    DIR=$HOME/controllers/odl
+    VERSION=1.3.0
+    rm -rf $DIR/bvc
+    if [ ! -e $DIR/bvc-$VERSION.zip ]; then
+      mvn org.apache.maven.plugins:maven-dependency-plugin:2.9:copy -Dartifact=com.brocade.bvc:bvc:$VERSION:zip -DoutputDirectory=$DIR
+      mvn org.apache.maven.plugins:maven-dependency-plugin:2.9:copy -Dartifact=com.brocade.bvc:bvc-dependencies:$VERSION:zip -DoutputDirectory=$DIR
+    fi
+    cd $DIR
+    unzip -q bvc-$VERSION.zip
+    unzip -q bvc-dependencies-$VERSION.zip
+    cd $DIR/bvc
+    if [ "$START" != "no" ]; then
+        ./install
+    fi
+    ;;
+  install-odl-plugin)
+    GNAME=$2
+    NAME=$3
+    APP=$4
+    VERSION=${5:-0.1.0-SNAPSHOT}
+    DIR=$HOME/controllers/odl
+    FILE=$HOME/git/$GNAME/$NAME/*karaf?extension/target/$APP-$VERSION.zip
+    if [ ! -e $FILE ]; then echo $FILE does not exists; exit ; fi
+    unzip $FILE -d $DIR 
+    cd $DIR/bvc
+    if [ "$START" != "no" ]; then
+        ./install
+    fi
+    ;;
+  install-eclipse)
+    VERSION=$2
+    DIR=$HOME/eclipse-$VERSION
+    TAR=$PACKAGES2/eclipse-$VERSION.tar.gz
+    if [ ! -e $TAR ]; then echo $TAR does not exists; exit 1; fi
+    if [ -e $DIR ]; then echo $DIR already exists; exit 1; fi
+    mkdir $DIR
+    cd $DIR
+    tar xf $TAR
+    if [ "$START" != "no" ]; then
+        echo Starting Eclipse: $DIR/eclipse
+        $DIR/eclipse
+    fi
+    ;;
+  uninstall-eclipse)
+    VERSION=$2
+    DIR=$HOME/eclipse-$VERSION
+    if [ ! -e $DIR ]; then echo $DIR does not exists; exit 1; fi
+    'rm' -r $DIR
+    ;;
+  install-camunda)
+    DIR=$HOME/camunda-7.3.0
+    if [ -e $DIR ]; then echo $DIR already exists; exit 1; fi
+    mkdir $DIR
+    cd $DIR
+    unzip $PACKAGES/camunda-bpm-tomcat-7.3.0.zip || exit
+    tar xf $PACKAGES/modeler-1.3.0-linux.gtk.x86_64.tar.gz || exit
+    if [ "$START" != "no" ]; then
+        JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom" ./start-camunda.sh
+    fi
+    ;;
+  uninstall-camunda)
+    DIR=$HOME/camunda-7.3.0
+    if [ ! -e $DIR ]; then echo $DIR does not exists; exit 1; fi
+    ps -eaf | grep java | grep apache-tomcat-7.0.62 | awk '{print $2}' | xargs kill -9
+    rm -r $DIR 
+    ;;
+  start-camunda-modeler)
+    $HOME/camunda-7.3.0/modeler/modeler > /dev/null &
+    ;;
+  start-camunda)
+    DIR=$HOME/camunda-7.3.0
+    cd $DIR
+    JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom" ./start-camunda.sh
+    ;;
+  stop-camunda)
+    ps -eaf | grep java | grep catalina.base=./server/apache-tomcat-7.0.62 | awk '{print $2}' | xargs kill -9
+    ;;
+  shutdown-camunda)
+    DIR=$HOME/camunda-7.3.0
+    cd $DIR
+    ./server/apache-tomcat-7.0.62/bin/shutdown.sh
+    ;;
+  install-tomcat)
+    DIR=$HOME/tomcat
+    if [ -e $DIR ]; then echo $DIR already exists; exit 1; fi
+    mkdir $DIR
+    cd $DIR
+    unzip $PACKAGES/apache-tomcat-7.0.62.zip
+    cd apache-tomcat-7.0.62
+    sed -i s/8080/18080/ conf/server.xml
+    sed -i s/8005/18005/ conf/server.xml
+    sed -i s/8009/18009/ conf/server.xml
+    sed -i s/8443/18443/ conf/server.xml
+    chmod +x bin/startup.sh bin/catalina.sh bin/shutdown.sh
+    if [ "$START" != "no" ]; then
+        $HOME/bin/ncomp-tool start-tomcat
+    fi
+    ;;
+  uninstall-tomcat)
+    $HOME/bin/ncomp-tool stop-tomcat
+    DIR=$HOME/tomcat
+    if [ ! -e $DIR ]; then echo $DIR does not exists; exit 1; fi
+    rm -r $DIR 
+    ;;
+  start-tomcat)
+    cd tomcat/apache-tomcat-7.0.62
+    NUM_TOMCAT=$(ps -eaf | grep java | grep catalina.base=$HOME/tomcat/apache-tomcat-7.0.62 | wc -l)
+    if [ "$NUM_TOMCAT" != "0" ]; then echo Tomcat already running; exit; fi
+    JAVA_OPTS="-Djava.security.egd=file:/dev/./urandom" bin/startup.sh
+    echo URL "http://localhost:18080/" will automatically load in 30 seconds
+    (sleep 30; $BROWSER "http://localhost:18080";) &
+    ;;
+  stop-tomcat)
+    ps -eaf | grep java | grep catalina.base=$HOME/tomcat/apache-tomcat-7.0.62 | awk '{print $2}' | xargs kill -9
+    ;;
+  shutdown-tomcat)
+    /home/tomcat/apache-tomcat-7.0.62/bin/shutdown.sh
+    ;;
+  restart-vncserver)
+    rm -f $HOME/.vnc/*{pid,log} /tmp/.X?-lock /tmp/.X11-unix/X?
+    ps -eaf | grep Xvnc4 | awk '{print $2}' | xargs kill -9
+    vncserver
+    ;;
+  *)
+     echo Usages:
+     echo "  #### tools for updating NCOMP development setup"
+     echo "  $0 update-ncomp-tool"
+     echo "  $0 install-eclipse VERSION"
+     echo "  $0 uninstall-eclipse VERSION"
+     echo "  #### tools for using Eclipse Modeling Framework"
+     echo "  $0 create-xcore-project"
+     echo "  $0 create-sirius-project"
+     echo "  $0 create-parent-project GroupId ArtifactIdPrefix"
+     echo "  $0 install-sirius-controller GroupId ArtifactId PortNumber [Version]"
+     echo "  $0 install-sirius-controller-gui ArtifactId PrettyName"
+     echo "  #### tools for using ODL"
+     echo "  $0 install-odl-controller"
+     echo "  $0 install-odl-plugin GroupId ArtifactId [Version]"
+     echo "  #### tools for using Tomcat"
+     echo "  $0 install-tomcat"
+     echo "  $0 uninstall-tomcat"
+     echo "  $0 start-tomcat"
+     echo "  $0 stop-tomcat"
+     echo "  $0 shutdown-tomcat"
+     echo "  #### tools for using Camunda Business Process Management Platform https://camunda.com/"
+     echo "  $0 install-camunda"
+     echo "  $0 uninstall-camunda"
+     echo "  $0 start-camunda"
+     echo "  $0 stop-camunda"
+     echo "  $0 shutdown-camunda"
+     echo "  $0 start-camunda-modeler"
+     echo "  #### utils"
+     echo "  $0 restart-vncserver"
+    ;;
+esac
+
