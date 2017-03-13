@@ -523,7 +523,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 		// http://www.eclipse.org/emf/2011/Xcore
 		createXcoreAnnotations();
 		// http://openecomp.org
-		createEcompAnnotations();
+		createOpenecompAnnotations();
 	}
 
 	/**
@@ -548,7 +548,7 @@ public class CorePackageImpl extends EPackageImpl implements CorePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void createEcompAnnotations() {
+	protected void createOpenecompAnnotations() {
 		String source = "http://openecomp.org";	
 		addAnnotation
 		  (getNamedEntity_Name(), 

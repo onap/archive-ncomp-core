@@ -45,6 +45,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageRuleImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageRuleImpl#getMessageFilter <em>Message Filter</em>}</li>
@@ -57,7 +58,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageRuleImpl#isDisabled <em>Disabled</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageRuleImpl#getUpdateFunction <em>Update Function</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -28,7 +28,6 @@ import org.openecomp.ncomp.component.ComponentClass;
 import org.openecomp.ncomp.component.ComponentPackage;
 
 import org.openecomp.ncomp.core.impl.NamedEntityImpl;
-
 import org.openecomp.ncomp.core.types.metrics.IncreasingULongMetricAttribute;
 import org.openecomp.ncomp.core.types.metrics.LongMetricAttribute;
 import java.util.Collection;
@@ -51,6 +50,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.component.impl.ComponentClassImpl#getApis <em>Apis</em>}</li>
  *   <li>{@link org.openecomp.ncomp.component.impl.ComponentClassImpl#getNumberOfResources <em>Number Of Resources</em>}</li>
@@ -58,7 +58,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link org.openecomp.ncomp.component.impl.ComponentClassImpl#getNumberOfCreateRequests <em>Number Of Create Requests</em>}</li>
  *   <li>{@link org.openecomp.ncomp.component.impl.ComponentClassImpl#getNumberOfDeleteRequests <em>Number Of Delete Requests</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -82,6 +81,7 @@ public class ComponentClassImpl extends NamedEntityImpl implements ComponentClas
 	 * @ordered
 	 */
 	protected static final LongMetricAttribute NUMBER_OF_RESOURCES_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getNumberOfResources() <em>Number Of Resources</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -100,6 +100,7 @@ public class ComponentClassImpl extends NamedEntityImpl implements ComponentClas
 	 * @ordered
 	 */
 	protected static final IncreasingULongMetricAttribute NUMBER_OF_UPDATE_REQUESTS_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getNumberOfUpdateRequests() <em>Number Of Update Requests</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -118,6 +119,7 @@ public class ComponentClassImpl extends NamedEntityImpl implements ComponentClas
 	 * @ordered
 	 */
 	protected static final IncreasingULongMetricAttribute NUMBER_OF_CREATE_REQUESTS_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getNumberOfCreateRequests() <em>Number Of Create Requests</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -136,6 +138,7 @@ public class ComponentClassImpl extends NamedEntityImpl implements ComponentClas
 	 * @ordered
 	 */
 	protected static final IncreasingULongMetricAttribute NUMBER_OF_DELETE_REQUESTS_EDEFAULT = null;
+
 	/**
 	 * The cached value of the '{@link #getNumberOfDeleteRequests() <em>Number Of Delete Requests</em>}' attribute.
 	 * <!-- begin-user-doc -->

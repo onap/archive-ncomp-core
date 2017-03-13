@@ -32,12 +32,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.metrics.Metric#getTime <em>Time</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.metrics.Metric#getResourceName <em>Resource Name</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.metrics.Metric#getMetricName <em>Metric Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.metrics.MetricsPackage#getMetric()
  * @model abstract="true"

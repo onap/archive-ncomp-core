@@ -50,11 +50,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.alerts.impl.AlertContainerImpl#getAlerts <em>Alerts</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.alerts.impl.AlertContainerImpl#getAlertingTemplate <em>Alerting Template</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

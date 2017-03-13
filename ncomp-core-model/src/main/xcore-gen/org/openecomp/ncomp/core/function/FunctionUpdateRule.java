@@ -34,11 +34,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.function.FunctionUpdateRule#getMatches <em>Matches</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.function.FunctionUpdateRule#getUpdates <em>Updates</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.function.FunctionPackage#getFunctionUpdateRule()
  * @model

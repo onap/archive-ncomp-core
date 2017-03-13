@@ -40,10 +40,10 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.impl.HasOperationalStateImpl#getOperationalState <em>Operational State</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

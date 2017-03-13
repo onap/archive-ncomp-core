@@ -27,9 +27,7 @@ import org.openecomp.ncomp.component.ComponentPackage;
 import org.openecomp.ncomp.component.DroolsRule;
 
 import org.openecomp.ncomp.core.impl.NamedEntityImpl;
-
 import org.openecomp.ncomp.core.types.metrics.IncreasingULongMetricAttribute;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -42,10 +40,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.component.impl.DroolsRuleImpl#getNumberOfFires <em>Number Of Fires</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -59,7 +57,6 @@ public class DroolsRuleImpl extends NamedEntityImpl implements DroolsRule {
 	 * @ordered
 	 */
 	protected static final IncreasingULongMetricAttribute NUMBER_OF_FIRES_EDEFAULT = null;
-
 	/**
 	 * The cached value of the '{@link #getNumberOfFires() <em>Number Of Fires</em>}' attribute.
 	 * <!-- begin-user-doc -->

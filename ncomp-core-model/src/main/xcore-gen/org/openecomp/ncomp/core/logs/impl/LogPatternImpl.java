@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogPatternImpl#getPattern <em>Pattern</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogPatternImpl#getMessage <em>Message</em>}</li>
@@ -46,7 +47,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogPatternImpl#getSeverity <em>Severity</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogPatternImpl#getPath <em>Path</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

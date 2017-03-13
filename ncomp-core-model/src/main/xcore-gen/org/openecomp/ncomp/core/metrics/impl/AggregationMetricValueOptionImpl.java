@@ -39,11 +39,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.metrics.impl.AggregationMetricValueOptionImpl#getDuration <em>Duration</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.metrics.impl.AggregationMetricValueOptionImpl#getAggregationType <em>Aggregation Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

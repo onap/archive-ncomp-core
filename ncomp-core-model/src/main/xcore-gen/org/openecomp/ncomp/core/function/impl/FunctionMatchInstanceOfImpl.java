@@ -38,11 +38,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.function.impl.FunctionMatchInstanceOfImpl#getEPackage <em>EPackage</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.function.impl.FunctionMatchInstanceOfImpl#getEName <em>EName</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

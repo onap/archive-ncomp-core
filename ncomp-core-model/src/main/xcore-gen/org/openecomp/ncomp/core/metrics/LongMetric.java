@@ -31,12 +31,12 @@ package org.openecomp.ncomp.core.metrics;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.metrics.LongMetric#isIncreasing <em>Increasing</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.metrics.LongMetric#isDelta <em>Delta</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.metrics.LongMetric#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.metrics.MetricsPackage#getLongMetric()
  * @model

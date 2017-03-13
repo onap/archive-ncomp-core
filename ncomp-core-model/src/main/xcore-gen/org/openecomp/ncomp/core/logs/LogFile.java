@@ -34,11 +34,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.logs.LogFile#getFilename <em>Filename</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.LogFile#getPatterns <em>Patterns</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.logs.LogsPackage#getLogFile()
  * @model

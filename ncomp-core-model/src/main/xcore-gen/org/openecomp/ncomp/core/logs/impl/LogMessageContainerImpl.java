@@ -51,12 +51,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageContainerImpl#getLogMessageConfiguration <em>Log Message Configuration</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageContainerImpl#getLogMessageCategories <em>Log Message Categories</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageContainerImpl#getLogMessageStats <em>Log Message Stats</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.alerts.impl.ThresholdAlertImpl#getMetricName <em>Metric Name</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.alerts.impl.ThresholdAlertImpl#getLowerBound <em>Lower Bound</em>}</li>
@@ -45,7 +46,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.openecomp.ncomp.core.alerts.impl.ThresholdAlertImpl#getDuration <em>Duration</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.alerts.impl.ThresholdAlertImpl#getMaxDelay <em>Max Delay</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

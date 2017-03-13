@@ -42,12 +42,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageStateImpl#isSuspended <em>Suspended</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageStateImpl#getLog <em>Log</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageStateImpl#getCategory <em>Category</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

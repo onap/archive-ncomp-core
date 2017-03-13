@@ -38,12 +38,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.metrics.impl.LongMetricImpl#isIncreasing <em>Increasing</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.metrics.impl.LongMetricImpl#isDelta <em>Delta</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.metrics.impl.LongMetricImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

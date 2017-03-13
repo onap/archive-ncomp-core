@@ -47,12 +47,12 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.function.impl.IteratorUsingFunctionImpl#getPaths <em>Paths</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.function.impl.IteratorUsingFunctionImpl#isRecursive <em>Recursive</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.function.impl.IteratorUsingFunctionImpl#getFilter <em>Filter</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

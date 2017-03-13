@@ -34,10 +34,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.logs.LogMessageCategory#getStats <em>Stats</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.logs.LogsPackage#getLogMessageCategory()
  * @model

@@ -34,13 +34,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.NamedEntity#getName <em>Name</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.NamedEntity#getLastPolled <em>Last Polled</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.NamedEntity#getLastChanged <em>Last Changed</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.NamedEntity#getCreated <em>Created</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.CorePackage#getNamedEntity()
  * @model abstract="true"

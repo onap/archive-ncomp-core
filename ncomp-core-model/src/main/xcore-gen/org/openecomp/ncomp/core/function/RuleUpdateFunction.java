@@ -32,10 +32,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.function.RuleUpdateFunction#getRules <em>Rules</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.function.FunctionPackage#getRuleUpdateFunction()
  * @model

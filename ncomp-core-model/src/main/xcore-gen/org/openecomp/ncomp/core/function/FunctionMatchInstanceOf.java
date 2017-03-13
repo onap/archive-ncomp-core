@@ -31,11 +31,11 @@ package org.openecomp.ncomp.core.function;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.function.FunctionMatchInstanceOf#getEPackage <em>EPackage</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.function.FunctionMatchInstanceOf#getEName <em>EName</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.function.FunctionPackage#getFunctionMatchInstanceOf()
  * @model

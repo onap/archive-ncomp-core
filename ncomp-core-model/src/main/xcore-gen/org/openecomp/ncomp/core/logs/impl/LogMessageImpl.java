@@ -41,6 +41,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageImpl#getTime <em>Time</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageImpl#getResourceName <em>Resource Name</em>}</li>
@@ -51,7 +52,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageImpl#getNumberOfSuppressed <em>Number Of Suppressed</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageImpl#getSuppressedStartTime <em>Suppressed Start Time</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.logs.LogPattern#getPattern <em>Pattern</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.LogPattern#getMessage <em>Message</em>}</li>
@@ -39,7 +40,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.openecomp.ncomp.core.logs.LogPattern#getSeverity <em>Severity</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.LogPattern#getPath <em>Path</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.logs.LogsPackage#getLogPattern()
  * @model

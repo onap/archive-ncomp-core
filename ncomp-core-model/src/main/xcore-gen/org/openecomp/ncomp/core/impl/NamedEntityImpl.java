@@ -41,13 +41,13 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.impl.NamedEntityImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.impl.NamedEntityImpl#getLastPolled <em>Last Polled</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.impl.NamedEntityImpl#getLastChanged <em>Last Changed</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.impl.NamedEntityImpl#getCreated <em>Created</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

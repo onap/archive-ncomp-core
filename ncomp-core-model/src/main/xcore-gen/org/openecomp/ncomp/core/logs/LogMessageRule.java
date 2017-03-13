@@ -34,6 +34,7 @@ import org.openecomp.ncomp.core.function.Function;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.logs.LogMessageRule#getDescription <em>Description</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.LogMessageRule#getMessageFilter <em>Message Filter</em>}</li>
@@ -46,7 +47,6 @@ import org.openecomp.ncomp.core.function.Function;
  *   <li>{@link org.openecomp.ncomp.core.logs.LogMessageRule#isDisabled <em>Disabled</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.LogMessageRule#getUpdateFunction <em>Update Function</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.logs.LogsPackage#getLogMessageRule()
  * @model

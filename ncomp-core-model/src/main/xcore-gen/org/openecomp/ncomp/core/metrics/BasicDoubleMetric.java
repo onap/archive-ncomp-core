@@ -32,10 +32,10 @@ import org.openecomp.ncomp.core.types.metrics.DoubleMetricAttribute;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.metrics.BasicDoubleMetric#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.metrics.MetricsPackage#getBasicDoubleMetric()
  * @model

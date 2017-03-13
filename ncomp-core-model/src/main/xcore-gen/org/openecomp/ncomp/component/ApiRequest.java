@@ -32,6 +32,7 @@ import org.openecomp.ncomp.core.Event;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.component.ApiRequest#getComponentName <em>Component Name</em>}</li>
  *   <li>{@link org.openecomp.ncomp.component.ApiRequest#getResourcePath <em>Resource Path</em>}</li>
@@ -41,7 +42,6 @@ import org.openecomp.ncomp.core.Event;
  *   <li>{@link org.openecomp.ncomp.component.ApiRequest#getDuration <em>Duration</em>}</li>
  *   <li>{@link org.openecomp.ncomp.component.ApiRequest#getStatus <em>Status</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.component.ComponentPackage#getApiRequest()
  * @model

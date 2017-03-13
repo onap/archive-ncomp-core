@@ -50,11 +50,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.function.impl.FunctionRuleImpl#getMatches <em>Matches</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.function.impl.FunctionRuleImpl#getAction <em>Action</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

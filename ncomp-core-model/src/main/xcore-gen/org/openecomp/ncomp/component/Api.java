@@ -35,6 +35,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.component.Api#getNumberOfRequests <em>Number Of Requests</em>}</li>
  *   <li>{@link org.openecomp.ncomp.component.Api#getNumberOfErrorRequests <em>Number Of Error Requests</em>}</li>
@@ -42,7 +43,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.openecomp.ncomp.component.Api#getOutstandingRequests <em>Outstanding Requests</em>}</li>
  *   <li>{@link org.openecomp.ncomp.component.Api#getLastRequestDuration <em>Last Request Duration</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.component.ComponentPackage#getApi()
  * @model

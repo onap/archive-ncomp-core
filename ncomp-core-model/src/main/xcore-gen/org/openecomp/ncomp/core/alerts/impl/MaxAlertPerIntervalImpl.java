@@ -38,11 +38,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.alerts.impl.MaxAlertPerIntervalImpl#getInterval <em>Interval</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.alerts.impl.MaxAlertPerIntervalImpl#getMaxAlerts <em>Max Alerts</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

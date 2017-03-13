@@ -33,11 +33,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.component.Component#getClasses <em>Classes</em>}</li>
  *   <li>{@link org.openecomp.ncomp.component.Component#getDroolsRuntimes <em>Drools Runtimes</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.component.ComponentPackage#getComponent()
  * @model

@@ -34,9 +34,7 @@ import org.openecomp.ncomp.core.alerts.DampingRule;
 import org.openecomp.ncomp.core.impl.NamedEntityImpl;
 
 import org.openecomp.ncomp.core.logs.LogSeverity;
-
 import org.openecomp.ncomp.core.types.metrics.IncreasingULongMetricAttribute;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
@@ -51,6 +49,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.alerts.impl.AlertImpl#getOperationalState <em>Operational State</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.alerts.impl.AlertImpl#getSeverity <em>Severity</em>}</li>
@@ -58,7 +57,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.openecomp.ncomp.core.alerts.impl.AlertImpl#getNumAlerts <em>Num Alerts</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.alerts.impl.AlertImpl#getNumAlertsSuppressed <em>Num Alerts Suppressed</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

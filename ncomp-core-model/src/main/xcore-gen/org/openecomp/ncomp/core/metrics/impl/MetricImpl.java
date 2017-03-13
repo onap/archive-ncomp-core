@@ -39,12 +39,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.metrics.impl.MetricImpl#getTime <em>Time</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.metrics.impl.MetricImpl#getResourceName <em>Resource Name</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.metrics.impl.MetricImpl#getMetricName <em>Metric Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

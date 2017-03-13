@@ -31,6 +31,7 @@ package org.openecomp.ncomp.core.alerts;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.alerts.ThresholdAlert#getMetricName <em>Metric Name</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.alerts.ThresholdAlert#getLowerBound <em>Lower Bound</em>}</li>
@@ -38,7 +39,6 @@ package org.openecomp.ncomp.core.alerts;
  *   <li>{@link org.openecomp.ncomp.core.alerts.ThresholdAlert#getDuration <em>Duration</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.alerts.ThresholdAlert#getMaxDelay <em>Max Delay</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.alerts.AlertsPackage#getThresholdAlert()
  * @model

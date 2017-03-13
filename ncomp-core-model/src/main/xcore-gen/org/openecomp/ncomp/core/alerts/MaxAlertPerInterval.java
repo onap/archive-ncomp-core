@@ -31,11 +31,11 @@ package org.openecomp.ncomp.core.alerts;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.alerts.MaxAlertPerInterval#getInterval <em>Interval</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.alerts.MaxAlertPerInterval#getMaxAlerts <em>Max Alerts</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.alerts.AlertsPackage#getMaxAlertPerInterval()
  * @model

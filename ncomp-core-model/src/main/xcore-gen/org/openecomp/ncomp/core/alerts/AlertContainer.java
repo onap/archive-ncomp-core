@@ -34,11 +34,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.alerts.AlertContainer#getAlerts <em>Alerts</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.alerts.AlertContainer#getAlertingTemplate <em>Alerting Template</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.alerts.AlertsPackage#getAlertContainer()
  * @model abstract="true"

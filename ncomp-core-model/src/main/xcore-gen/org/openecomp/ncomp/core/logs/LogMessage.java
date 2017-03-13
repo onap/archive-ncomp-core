@@ -32,6 +32,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.logs.LogMessage#getTime <em>Time</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.LogMessage#getResourceName <em>Resource Name</em>}</li>
@@ -42,7 +43,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.openecomp.ncomp.core.logs.LogMessage#getNumberOfSuppressed <em>Number Of Suppressed</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.LogMessage#getSuppressedStartTime <em>Suppressed Start Time</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.logs.LogsPackage#getLogMessage()
  * @model

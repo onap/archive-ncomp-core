@@ -25,9 +25,7 @@ package org.openecomp.ncomp.core.metrics.impl;
 
 import org.openecomp.ncomp.core.metrics.BasicLongMetric;
 import org.openecomp.ncomp.core.metrics.MetricsPackage;
-
 import org.openecomp.ncomp.core.types.metrics.LongMetricAttribute;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -40,10 +38,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.metrics.impl.BasicLongMetricImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -57,7 +55,6 @@ public class BasicLongMetricImpl extends BasicMetricImpl implements BasicLongMet
 	 * @ordered
 	 */
 	protected static final LongMetricAttribute VALUE_EDEFAULT = null;
-
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->

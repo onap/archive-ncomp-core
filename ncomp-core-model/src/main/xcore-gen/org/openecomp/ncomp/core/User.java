@@ -31,11 +31,11 @@ package org.openecomp.ncomp.core;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.User#getPublicKey <em>Public Key</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.User#getDeploymentStatus <em>Deployment Status</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.CorePackage#getUser()
  * @model

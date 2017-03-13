@@ -41,6 +41,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.function.impl.FunctionMatchMetricImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.function.impl.FunctionMatchMetricImpl#getOption <em>Option</em>}</li>
@@ -48,7 +49,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.openecomp.ncomp.core.function.impl.FunctionMatchMetricImpl#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.function.impl.FunctionMatchMetricImpl#isNegation <em>Negation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

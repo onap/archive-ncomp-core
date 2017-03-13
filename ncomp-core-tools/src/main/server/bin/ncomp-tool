@@ -29,11 +29,11 @@ echo `date` $0 $* >> $LOG
 
 case $CMD in 
   update-ncomp-tool)
-    GIT=git/dcae-org.openecomp.ncomp
-    ZIP=git/org.openecomp.ncomp.core/ncomp-core-tools/target/ncomp-core-tools-*.zip
+    GIT=git/ncomp
+    ZIP=git/ncomp.core/ncomp-core-tools/target/ncomp-core-tools-*.zip
     for PROJECT in core maven; do
       if [ ! -e $GIT.$PROJECT ]; then 
-        echo need to clone $GIT.$PROJECT
+        echo Need to clone $GIT.$PROJECT
         exit 1
       else 
         (cd $GIT.$PROJECT ; git pull )
@@ -50,7 +50,7 @@ case $CMD in
     unzip -o $ZIP
     ;;
   create-xcore-project)
-    GEN=git/dcae-org.openecomp.ncomp.maven/ncomp-maven-xcore-project/src/main/resources/new_project.sh
+    GEN=git/ncomp.maven/ncomp-maven-xcore-project/src/main/resources/new_project.sh
     echo "$NCOMPPROJECT GroupId (e.g., $NCOMPBASE.hello.world):"
     read GNAME
     if [[ ! $GNAME =~ $NCOMPBASE[a-z.]+$ ]]; then echo 'need to match org.openecomp.ncomp[a-z.]+'; exit; fi
@@ -82,7 +82,7 @@ case $CMD in
     bash $GEN $DIR/$PROJECTNAME $X $PROJECTTYPE $Y $GNAME $NCOMPBASE $NCOMPNAME
     ;;
   create-parent-project)
-    GEN=git/dcae-org.openecomp.ncomp.maven/ncomp-maven-parent-project/src/main/resources/new_project.sh
+    GEN=git/ncomp.maven/ncomp-maven-parent-project/src/main/resources/new_project.sh
     GNAME=$2
     PROJECTNAME=$3
     DIR=git/$GNAME
@@ -90,7 +90,7 @@ case $CMD in
     bash $GEN $DIR $PROJECTNAME $GNAME
     ;;
   create-sirius-project)
-    GEN=git/dcae-org.openecomp.ncomp.maven/ncomp-maven-sirius-project/src/main/resources/new_project.sh
+    GEN=git/ncomp.maven/ncomp-maven-sirius-project/src/main/resources/new_project.sh
     echo "$NCOMPPROJECT GroupId (e.g., $NCOMPBASE.hello.world):"
     read GNAME
     if [[ ! $GNAME =~ $NCOMPBASE[a-z.]+$ ]]; then echo 'need to match org.openecomp.ncomp[a-z.]+'; exit; fi
@@ -128,7 +128,7 @@ case $CMD in
     bash $GEN $DIR/$PROJECTNAME $X $MODEL $PROJECTTYPE $Y $PROJECTPREFIX $GNAME $MODELPROJECTNAME $NCOMPBASE $NCOMPNAME
     ;;
   create-sirius-runtime)
-    GEN=git/dcae-org.openecomp.ncomp.maven/ncomp-maven-sirius-runtime/src/main/resources/new_project.sh
+    GEN=git/ncomp.maven/ncomp-maven-sirius-runtime/src/main/resources/new_project.sh
     DIR=$2
     GNAME=$3
     PROJECTNAME=$4

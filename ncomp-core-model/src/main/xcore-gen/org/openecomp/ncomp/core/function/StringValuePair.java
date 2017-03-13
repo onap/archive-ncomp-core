@@ -31,10 +31,10 @@ package org.openecomp.ncomp.core.function;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.function.StringValuePair#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.function.FunctionPackage#getStringValuePair()
  * @model

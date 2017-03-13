@@ -31,12 +31,12 @@ package org.openecomp.ncomp.core.function;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.function.FunctionMatchAttribute#getPath <em>Path</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.function.FunctionMatchAttribute#getMatch <em>Match</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.function.FunctionMatchAttribute#isNegation <em>Negation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.function.FunctionPackage#getFunctionMatchAttribute()
  * @model

@@ -32,6 +32,7 @@ import org.openecomp.ncomp.core.metrics.MetricValueOption;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.function.FunctionMatchMetric#getPath <em>Path</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.function.FunctionMatchMetric#getOption <em>Option</em>}</li>
@@ -39,7 +40,6 @@ import org.openecomp.ncomp.core.metrics.MetricValueOption;
  *   <li>{@link org.openecomp.ncomp.core.function.FunctionMatchMetric#getUpperBound <em>Upper Bound</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.function.FunctionMatchMetric#isNegation <em>Negation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.function.FunctionPackage#getFunctionMatchMetric()
  * @model

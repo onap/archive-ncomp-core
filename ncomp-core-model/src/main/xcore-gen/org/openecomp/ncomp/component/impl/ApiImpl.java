@@ -28,7 +28,6 @@ import org.openecomp.ncomp.component.ApiRequest;
 import org.openecomp.ncomp.component.ComponentPackage;
 
 import org.openecomp.ncomp.core.impl.NamedEntityImpl;
-
 import org.openecomp.ncomp.core.types.metrics.IncreasingULongMetricAttribute;
 import org.openecomp.ncomp.core.types.metrics.LongMetricAttribute;
 import java.lang.reflect.InvocationTargetException;
@@ -43,6 +42,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.component.impl.ApiImpl#getNumberOfRequests <em>Number Of Requests</em>}</li>
  *   <li>{@link org.openecomp.ncomp.component.impl.ApiImpl#getNumberOfErrorRequests <em>Number Of Error Requests</em>}</li>
@@ -50,7 +50,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.openecomp.ncomp.component.impl.ApiImpl#getOutstandingRequests <em>Outstanding Requests</em>}</li>
  *   <li>{@link org.openecomp.ncomp.component.impl.ApiImpl#getLastRequestDuration <em>Last Request Duration</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

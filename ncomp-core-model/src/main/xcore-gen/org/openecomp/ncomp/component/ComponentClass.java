@@ -24,7 +24,6 @@
 package org.openecomp.ncomp.component;
 
 import org.openecomp.ncomp.core.NamedEntity;
-
 import org.openecomp.ncomp.core.types.metrics.IncreasingULongMetricAttribute;
 import org.openecomp.ncomp.core.types.metrics.LongMetricAttribute;
 import org.eclipse.emf.common.util.EList;
@@ -36,6 +35,7 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.component.ComponentClass#getApis <em>Apis</em>}</li>
  *   <li>{@link org.openecomp.ncomp.component.ComponentClass#getNumberOfResources <em>Number Of Resources</em>}</li>
@@ -43,7 +43,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.openecomp.ncomp.component.ComponentClass#getNumberOfCreateRequests <em>Number Of Create Requests</em>}</li>
  *   <li>{@link org.openecomp.ncomp.component.ComponentClass#getNumberOfDeleteRequests <em>Number Of Delete Requests</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.component.ComponentPackage#getComponentClass()
  * @model

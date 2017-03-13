@@ -33,10 +33,10 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.component.DroolsRuntime#getRules <em>Rules</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.component.ComponentPackage#getDroolsRuntime()
  * @model

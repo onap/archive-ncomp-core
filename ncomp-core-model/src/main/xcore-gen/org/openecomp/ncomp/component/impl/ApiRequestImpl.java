@@ -41,6 +41,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.component.impl.ApiRequestImpl#getComponentName <em>Component Name</em>}</li>
  *   <li>{@link org.openecomp.ncomp.component.impl.ApiRequestImpl#getResourcePath <em>Resource Path</em>}</li>
@@ -50,7 +51,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.openecomp.ncomp.component.impl.ApiRequestImpl#getDuration <em>Duration</em>}</li>
  *   <li>{@link org.openecomp.ncomp.component.impl.ApiRequestImpl#getStatus <em>Status</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

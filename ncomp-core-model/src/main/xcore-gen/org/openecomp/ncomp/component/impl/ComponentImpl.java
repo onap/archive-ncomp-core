@@ -42,11 +42,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.component.impl.ComponentImpl#getClasses <em>Classes</em>}</li>
  *   <li>{@link org.openecomp.ncomp.component.impl.ComponentImpl#getDroolsRuntimes <em>Drools Runtimes</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -39,12 +39,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageStatsImpl#getLevel <em>Level</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageStatsImpl#getSeverity <em>Severity</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.logs.impl.LogMessageStatsImpl#getCount <em>Count</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

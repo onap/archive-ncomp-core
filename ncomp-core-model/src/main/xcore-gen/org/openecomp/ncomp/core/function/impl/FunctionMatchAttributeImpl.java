@@ -38,12 +38,12 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.function.impl.FunctionMatchAttributeImpl#getPath <em>Path</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.function.impl.FunctionMatchAttributeImpl#getMatch <em>Match</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.function.impl.FunctionMatchAttributeImpl#isNegation <em>Negation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -31,11 +31,11 @@ package org.openecomp.ncomp.core.metrics;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.openecomp.ncomp.core.metrics.AggregationMetricValueOption#getDuration <em>Duration</em>}</li>
  *   <li>{@link org.openecomp.ncomp.core.metrics.AggregationMetricValueOption#getAggregationType <em>Aggregation Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.openecomp.ncomp.core.metrics.MetricsPackage#getAggregationMetricValueOption()
  * @model
