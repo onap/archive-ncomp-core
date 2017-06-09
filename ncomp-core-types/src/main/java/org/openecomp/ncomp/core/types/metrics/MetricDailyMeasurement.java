@@ -31,9 +31,12 @@ import org.openecomp.ncomp.utils.journaling.JournalingObject;
 
 public class MetricDailyMeasurement extends JournalingObject implements Serializable {
 	private static final long serialVersionUID = 6485680539666136294L;
+	static {
+		JournalingObject.addClassToWhiteList("org.openecomp.ncomp.core.types.metrics.*");
+	}
 	public JournalingList<MetricMeasurement> l;
-	private MetricMeasurement last;
-	private MetricMeasurement last2;
+	public MetricMeasurement last;
+	public MetricMeasurement last2;
 	
 	public MetricDailyMeasurement(String context, JournalingObject parent) {
 		super(context,parent);
