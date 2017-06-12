@@ -26,7 +26,7 @@ import java.util.Date;
 
 public class StringMetricMeasurement extends MetricMeasurement implements Serializable {
 	private static final long serialVersionUID = -4665287013236612581L;
-	String v;
+	public String v;
 
 	public StringMetricMeasurement(Date d, String v) {
 		this.d = d;
