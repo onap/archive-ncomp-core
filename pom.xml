@@ -4,6 +4,7 @@
 	<groupId>org.openecomp.ncomp.core</groupId>
 	<artifactId>ncomp-core</artifactId>
 	<packaging>pom</packaging>
+        <name>ncomp-core</name>
 
 		
 <build>
